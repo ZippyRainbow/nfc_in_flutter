@@ -20,7 +20,7 @@ flutter:
     plugin:
         platforms:
             android:
-                package: me.ZippyRainbow.nfc_in_flutter
+                package: me.andisemler.nfc_in_flutter
                 pluginClass: NfcInFlutterPlugin
             ios:
                 pluginClass: NfcInFlutterPlugin
