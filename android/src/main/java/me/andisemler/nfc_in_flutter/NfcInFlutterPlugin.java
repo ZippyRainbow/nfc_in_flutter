@@ -1,4 +1,4 @@
-package me.ZippyRainbow.nfc_in_flutter;
+package me.andisemler.nfc_in_flutter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
