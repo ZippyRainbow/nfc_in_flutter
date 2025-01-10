@@ -4,13 +4,13 @@ import 'dart:async';
 import 'dart:io';
 
 class RecordEditor {
-  TextEditingController mediaTypeController;
-  TextEditingController payloadController;
+  TextEditingController mediaTypeController = TextEditingController();
+  TextEditingController payloadController = TextEditingController();
 
-  RecordEditor() {
+  /*RecordEditor() {
     mediaTypeController = TextEditingController();
     payloadController = TextEditingController();
-  }
+  }*/
 }
 
 class WriteExampleScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class WriteExampleScreen extends StatefulWidget {
 }
 
 class _WriteExampleScreenState extends State<WriteExampleScreen> {
-  StreamSubscription<NDEFMessage> _stream;
+  StreamSubscription<NDEFMessage>? _stream;
   List<RecordEditor> _records = [];
   bool _hasClosedWriteDialog = false;
 
@@ -45,7 +45,7 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
         builder: (context) => AlertDialog(
           title: const Text("Scan the tag you want to write to"),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: const Text("Cancel"),
               onPressed: () {
                 _hasClosedWriteDialog = true;
@@ -75,7 +75,7 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
         padding: const EdgeInsets.all(20),
         children: <Widget>[
           Center(
-            child: OutlineButton(
+            child: OutlinedButton(
               child: const Text("Add record"),
               onPressed: _addRecord,
             ),
@@ -86,16 +86,16 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Record", style: Theme.of(context).textTheme.bodyText2),
+                  Text("Record", style: Theme.of(context).textTheme.bodyMedium),
                   TextFormField(
                     controller: record.mediaTypeController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Media type",
                     ),
                   ),
                   TextFormField(
                     controller: record.payloadController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Payload",
                     ),
                   )
@@ -103,9 +103,9 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
               ),
             ),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               child: const Text("Write to tag"),
-              onPressed: _records.length > 0 ? () => _write(context) : null,
+              onPressed: _records.isNotEmpty ? () => _write(context) : null,
             ),
           ),
         ],

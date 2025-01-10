@@ -51,10 +51,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // _stream is a subscription to the stream returned by `NFC.read()`.
   // The subscription is stored in state so the stream can be canceled later
-  StreamSubscription<NDEFMessage> _stream;
+  late StreamSubscription<NDEFMessage>? _stream;
 
   // _tags is a list of scanned tags
-  List<NDEFMessage> _tags = [];
+  final List<NDEFMessage> _tags = [];
 
   bool _supportsNFC = false;
 
@@ -146,12 +146,12 @@ class _MyAppState extends State<MyApp> {
             Builder(
               builder: (context) {
                 if (!_supportsNFC) {
-                  return FlatButton(
-                    child: Text("NFC unsupported"),
-                    onPressed: null,
+                  return TextButton(
+                      onPressed: () {},
+                    child: const Text("NFC unsupported"),
                   );
                 }
-                return FlatButton(
+                return TextButton(
                   child:
                       Text(_stream == null ? "Start reading" : "Stop reading"),
                   onPressed: () {
@@ -179,9 +179,9 @@ class _MyAppState extends State<MyApp> {
         body: ListView.builder(
           itemCount: _tags.length,
           itemBuilder: (context, index) {
-            const TextStyle payloadTextStyle = const TextStyle(
+            const TextStyle payloadTextStyle = TextStyle(
               fontSize: 15,
-              color: const Color(0xFF454545),
+              color: Color(0xFF454545),
             );
 
             return Padding(
@@ -190,7 +190,7 @@ class _MyAppState extends State<MyApp> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text("NDEF Tag",
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Builder(
                     builder: (context) {
                       // Build list of records
@@ -203,15 +203,15 @@ class _MyAppState extends State<MyApp> {
                               "Record ${i + 1} - ${_tags[index].records[i].type}",
                               style: const TextStyle(
                                 fontSize: 13,
-                                color: const Color(0xFF666666),
+                                color: Color(0xFF666666),
                               ),
                             ),
                             Text(
-                              _tags[index].records[i].payload,
+                              _tags[index].records[i].payload!,
                               style: payloadTextStyle,
                             ),
                             Text(
-                              _tags[index].records[i].data,
+                              _tags[index].records[i].data!,
                               style: payloadTextStyle,
                             ),
                           ],
