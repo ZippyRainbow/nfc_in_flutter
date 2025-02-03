@@ -22,9 +22,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    if (project.android.hasProperty("namespace")) {
-        namespace("com.runningstars.nfcreadinflutter")
-    }
+    namespace("com.runningstars.nfcreadinflutter")
     compileSdkVersion 34
 
     defaultConfig {
