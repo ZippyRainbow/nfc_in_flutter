@@ -26,6 +26,7 @@ android {
     compileSdkVersion 34
 
     defaultConfig {
+        applicationId "com.runningstars.nfcreadinflutter"
         minSdkVersion 19
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
