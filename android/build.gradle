@@ -1,4 +1,6 @@
-group 'me.andisemler.nfc_in_flutter'
+package android
+
+group 'com.running_stars.nfc_read_in_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
