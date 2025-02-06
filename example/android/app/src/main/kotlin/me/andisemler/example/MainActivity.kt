@@ -1,4 +1,4 @@
-package com.running_stars.example
+package me.andisemler.example
 
 import io.flutter.embedding.android.FlutterActivity
 

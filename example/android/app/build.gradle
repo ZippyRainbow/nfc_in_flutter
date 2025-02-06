@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.running_stars.nfc_in_flutter_example"
+        applicationId "me.andisemler.nfc_in_flutter_example"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()

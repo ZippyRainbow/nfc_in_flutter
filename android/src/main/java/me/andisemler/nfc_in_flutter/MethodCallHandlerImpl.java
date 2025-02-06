@@ -1,4 +1,4 @@
-package com.running_stars.nfc_in_flutter;
+package me.andisemler.nfc_in_flutter;
 
 import android.app.Activity;
 import android.app.PendingIntent;
