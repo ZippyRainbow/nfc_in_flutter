@@ -22,7 +22,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    namespace("com.running_stars.nfc_read_in_flutter")
+    namespace("me.andisemler.nfc_in_flutter")
     compileSdkVersion 34
 
     defaultConfig {
