@@ -6,9 +6,11 @@ import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import './read_example_screen.dart';
 import './write_example_screen.dart';
 
-void main() => runApp(ExampleApp());
+void main() => runApp(const ExampleApp());
 
 class ExampleApp extends StatelessWidget {
+  const ExampleApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,14 +38,16 @@ class ExampleApp extends StatelessWidget {
         }),
       ),
       routes: {
-        "/read_example": (context) => ReadExampleScreen(),
-        "/write_example": (context) => WriteExampleScreen(),
+        "/read_example": (context) => const ReadExampleScreen(),
+        "/write_example": (context) => const WriteExampleScreen(),
       },
     );
   }
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -89,7 +93,7 @@ class _MyAppState extends State<MyApp> {
           _stream = null;
         });
 
-        if (!(e is NFCUserCanceledSessionException)) {
+        if (e is! NFCUserCanceledSessionException) {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
@@ -104,7 +108,7 @@ class _MyAppState extends State<MyApp> {
         _stream = subscription;
       });
     } catch (err) {
-      print("error: $err");
+      debugPrint("error: $err");
     }
   }
 
@@ -165,7 +169,7 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             IconButton(
-              icon: Icon(Icons.clear_all),
+              icon: const Icon(Icons.clear_all),
               onPressed: () {
                 setState(() {
                   _tags.clear();

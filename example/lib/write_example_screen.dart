@@ -14,13 +14,15 @@ class RecordEditor {
 }
 
 class WriteExampleScreen extends StatefulWidget {
+  const WriteExampleScreen({Key? key}) : super(key: key);
+
   @override
   _WriteExampleScreenState createState() => _WriteExampleScreenState();
 }
 
 class _WriteExampleScreenState extends State<WriteExampleScreen> {
   StreamSubscription<NDEFMessage>? _stream;
-  List<RecordEditor> _records = [];
+  final List<RecordEditor> _records = [];
   bool _hasClosedWriteDialog = false;
 
   void _addRecord() {
