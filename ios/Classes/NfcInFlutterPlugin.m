@@ -50,9 +50,6 @@
         NSDictionary* args = call.arguments;
         [wrapper startReading:[args[@"scan_once"] boolValue] alertMessage:args[@"alert_message"]];
         result(nil);
-    } else if ([@"stopNDEFReading" isEqualToString:call.method]) {
-        [wrapper stopReading];
-        result([NSNumber numberWithBool:YES]);
     } else if ([@"writeNDEF" isEqualToString:call.method]) {
         NSDictionary* args = call.arguments;
         [wrapper writeToTag:args completionHandler:^(FlutterError * _Nullable error) {
@@ -446,16 +443,6 @@
     [self->session beginSession];
 }
 
-- (void)stopReading {
-    if (self->session != nil) {
-        if ([self->session isReady]) {
-            // Invalidate the session first
-            [self->session invalidateSession];
-        }
-        // Then set it to nil
-        self->session = nil;
-    }
-}
     
 - (BOOL)isEnabled {
     return NFCNDEFReaderSession.readingAvailable;
